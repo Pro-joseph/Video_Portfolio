@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap');
+@import "./tailwind.css";
+
+:root {
+    --orange: #ea580c;
+    --orange-dim: rgba(234, 88, 12, 0.15);
+    --bg: #0a0a0a;
+    --surface: #111111;
+    --border: rgba(255,255,255,0.06);
+    --text: #fafafa;
+    --muted: #525252;
+}
+
+@theme {
+    --font-body: 'DM Sans', sans-serif;
+    --font-display: 'Bebas Neue', sans-serif;
+}
+
+@layer base {
+    html { scroll-behavior: smooth; }
+    body {
+        font-family: 'DM Sans', sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        min-height: 100vh;
+    }
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Bebas Neue', sans-serif;
+        font-weight: 400;
+        letter-spacing: 0.02em;
+    }
+    a, button { cursor: pointer; }
+}
+
+@layer components {
+    .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    .animate-on-scroll.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .animate-on-scroll.delay-100 { transition-delay: 100ms; }
+    .animate-on-scroll.delay-200 { transition-delay: 200ms; }
+    .animate-on-scroll.delay-300 { transition-delay: 300ms; }
+    .animate-on-scroll.delay-400 { transition-delay: 400ms; }
+    .animate-on-scroll.delay-500 { transition-delay: 500ms; }
+
+    .section-title {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: clamp(3rem, 6vw, 5rem);
+        line-height: 0.9;
+        color: var(--text);
+        letter-spacing: 0.02em;
+        margin-bottom: 1rem;
+    }
+
+    .accent-line {
+        width: 40px;
+        height: 1px;
+        background: var(--orange);
+        margin-bottom: 1.5rem;
+    }
+
+    .btn-primary {
+        display: inline-flex; align-items: center; gap: 0.75rem;
+        padding: 0.75rem 2rem;
+        background: var(--orange); color: white;
+        font-family: 'DM Sans', sans-serif; font-weight: 500;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+    .btn-primary:hover { background: #c2410c; }
+
+    .btn-secondary {
+        display: inline-flex; align-items: center; gap: 0.75rem;
+        padding: 0.75rem 2rem;
+        background: transparent; color: var(--text);
+        font-family: 'DM Sans', sans-serif; font-weight: 500;
+        border: 1px solid var(--border);
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.05); border-color: var(--orange); }
+
+    .card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    .card:hover {
+        border-color: rgba(234, 88, 12, 0.3);
+        box-shadow: 0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(234, 88, 12, 0.15);
+    }
+
+    .nav-link {
+        font-family: 'DM Sans', sans-serif;
+        font-weight: 500;
+        font-size: 0.85rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+    .nav-link:hover { color: var(--orange); }
+
+    @media (max-width: 768px) { .section-title { font-size: 2.5rem; } }
+
+    @keyframes fadeUp {
+        to { opacity: 1; transform: translateY(0); }
+    }
+}
+
+@layer utilities {
+    .text-accent { color: var(--orange); }
+}
