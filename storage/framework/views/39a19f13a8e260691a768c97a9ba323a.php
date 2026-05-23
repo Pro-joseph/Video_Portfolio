@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>if(localStorage.getItem('theme')==='light')document.documentElement.className='light'</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $__env->yieldContent('title', 'FrameFlow - Professional Videography'); ?></title>
@@ -8,6 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
@@ -36,6 +38,20 @@
             --border: rgba(255,255,255,0.06);
             --text: #fafafa;
             --muted: #525252;
+            --header-bg: rgba(10,10,10,0.85);
+            --overlay-bg: rgba(10,10,10,0.7);
+            --overlay-heavy: rgba(10,10,10,0.95);
+        }
+
+        .light {
+            --bg: #fafafa;
+            --surface: #ffffff;
+            --border: rgba(0,0,0,0.08);
+            --text: #18181b;
+            --muted: #a1a1aa;
+            --header-bg: rgba(250,250,250,0.85);
+            --overlay-bg: rgba(0,0,0,0.5);
+            --overlay-heavy: rgba(0,0,0,0.9);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -66,7 +82,7 @@
             text-decoration: none;
             transition: all 0.3s ease;
         }
-        .btn-secondary:hover { background: rgba(255,255,255,0.05); border-color: var(--orange); }
+        .btn-secondary:hover { background: var(--orange-dim); border-color: var(--orange); }
 
         .card {
             background: var(--surface);
@@ -145,6 +161,25 @@
 
     <?php echo $__env->yieldPushContent('scripts'); ?>
     <?php echo $__env->yieldContent('extra-js'); ?>
+    <script>
+    function toggleTheme() {
+        var html = document.documentElement;
+        var isLight = html.classList.toggle('light');
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        updateThemeIcon(isLight);
+    }
+    function updateThemeIcon(isLight) {
+        var icon = document.getElementById('themeIcon');
+        if (icon) {
+            icon.setAttribute('d', isLight
+                ? 'M12 3a6 6 0 0 0 9 9 6 6 0 1 1-9-9Z'
+                : 'M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z');
+        }
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+        updateThemeIcon(document.documentElement.classList.contains('light'));
+    });
+    </script>
     <script>
     document.addEventListener('DOMContentLoaded', function () {
         var dot = document.getElementById('cursorDot');

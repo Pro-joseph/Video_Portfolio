@@ -46,7 +46,7 @@
     .hero-slider .slide::after {
         content: '';
         position: absolute; inset: 0;
-        background: linear-gradient(180deg, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.85) 100%);
+        background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.85) 100%);
     }
 
     .hero-dots {
@@ -347,7 +347,7 @@ $cta = $sections['cta'] ?? null;
                 </div>
             @endforeach
         @else
-            <div class="slide active" style="background:linear-gradient(135deg,#0a0a0a 0%,#171717 100%)"></div>
+            <div class="slide active" style="background:linear-gradient(135deg,var(--bg) 0%,var(--surface) 100%)"></div>
         @endif
     </div>
 
