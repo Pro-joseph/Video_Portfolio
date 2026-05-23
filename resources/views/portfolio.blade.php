@@ -4,16 +4,6 @@
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap');
 
-    :root {
-        --orange: #ea580c;
-        --orange-dim: rgba(234, 88, 12, 0.15);
-        --bg: #0a0a0a;
-        --surface: #111111;
-        --border: rgba(255,255,255,0.06);
-        --text: #fafafa;
-        --muted: #525252;
-    }
-
     * { box-sizing: border-box; }
 
     body { background: var(--bg); }
@@ -328,7 +318,7 @@
         transition: color 0.3s ease;
     }
 
-    .pf-card:hover .pf-card-title { color: #fff; }
+    .pf-card:hover .pf-card-title { color: var(--orange); }
 
     .pf-card-arrow {
         width: 36px;

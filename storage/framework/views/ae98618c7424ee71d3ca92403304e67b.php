@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             $thumb = $thumb ?: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=400&q=80';
                         ?>
                         <img src="<?php echo e($thumb); ?>" alt="<?php echo e($reel->title); ?>" class="w-full h-full object-cover" style="transition: transform 0.6s ease;" onerror="this.src='https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=400&q=80'">
-                        <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,10,10,0.8) 0%, transparent 50%);"></div>
+                        <div style="position: absolute; inset: 0; background: linear-gradient(to top, var(--overlay-bg) 0%, transparent 50%);"></div>
                         <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1rem;">
                             <h3 style="font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: white; letter-spacing: 0.03em;"><?php echo e($reel->title); ?></h3>
                         </div>

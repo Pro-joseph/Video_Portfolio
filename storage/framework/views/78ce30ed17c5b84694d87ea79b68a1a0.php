@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="gallery-image relative group aspect-square cursor-pointer section-fade" onclick="openLightbox('<?php echo e($image->image_url); ?>', '<?php echo e($image->caption ?? ''); ?>')" style="transition-delay: <?php echo e($loop->index * 50); ?>ms;">
                 <img src="<?php echo e($image->image_url); ?>" alt="<?php echo e($image->caption ?? $client->name); ?>" class="w-full h-full object-cover" style="transition: transform 0.6s ease;">
                 <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($image->caption): ?>
-                <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(10,10,10,0.7); opacity: 0; transition: opacity 0.3s ease;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0'">
+                <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: var(--overlay-bg); opacity: 0; transition: opacity 0.3s ease;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0'">
                     <p style="color: white; text-align: center; padding: 1rem; font-size: 0.9rem;"><?php echo e($image->caption); ?></p>
                 </div>
                 <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
 </div>
 
-<div id="lightbox" style="position: fixed; inset: 0; z-index: 999; display: none; align-items: center; justify-content: center; padding: 2rem; background: rgba(10, 10, 10, 0.95); cursor: pointer;" onclick="closeLightbox()">
+<div id="lightbox" style="position: fixed; inset: 0; z-index: 999; display: none; align-items: center; justify-content: center; padding: 2rem; background: var(--overlay-heavy); cursor: pointer;" onclick="closeLightbox()">
     <button style="position: absolute; top: 1rem; right: 1rem; color: white; font-size: 2.5rem; background: none; border: none; cursor: pointer; z-index: 10;" onclick="event.stopPropagation(); closeLightbox();">&times;</button>
     <img id="lightbox-img" src="" alt="" style="max-width: 100%; max-height: 90vh; object-fit: contain;">
     <p id="lightbox-caption" style="color: white; text-align: center; margin-top: 1rem;"></p>
