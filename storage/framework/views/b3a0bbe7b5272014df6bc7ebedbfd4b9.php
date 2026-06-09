@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 
-        <title>Verify Email - FrameFlow</title>
+        <title>Verify Email - Oumalk</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -17,7 +17,7 @@
     <body class="font-sans text-gray-900 antialiased">
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-white">
             <div class="mb-8 text-center">
-                <a href="/" class="text-3xl font-bold font-serif text-gray-900">FrameFlow</a>
+                <a href="/" class="text-3xl font-bold font-serif text-gray-900">Oumalk</a>
             </div>
 
             <div class="w-full sm:max-w-md mt-6 px-8 py-8 bg-white">

@@ -1,4 +1,4 @@
-<?php $__env->startSection('title', 'Profile - FrameFlow'); ?>
+<?php $__env->startSection('title', 'Profile - Oumalk'); ?>
 
 <?php $__env->startSection('content'); ?>
 <div class="pt-32 pb-20 px-6">

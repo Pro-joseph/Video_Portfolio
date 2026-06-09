@@ -1,25 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>if(localStorage.getItem('theme')==='light')document.documentElement.className='light'</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $__env->yieldContent('title', 'FrameFlow - Professional Videography'); ?></title>
+    <title><?php echo $__env->yieldContent('title', 'Oumalk - Professional Videography'); ?></title>
     <meta name="description" content="<?php echo $__env->yieldContent('description', 'Professional videography services for weddings, events, and commercial content'); ?>">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        primary: '<?php echo e($siteSettings['colors']['primary_color'] ?? '#1a1a2e'); ?>',
-                        secondary: '<?php echo e($siteSettings['colors']['secondary_color'] ?? '#f4a460'); ?>',
-                        accent: '<?php echo e($siteSettings['colors']['accent_color'] ?? '#e8d5c4'); ?>',
-                        dark: '<?php echo e($siteSettings['colors']['primary_color'] ?? '#1a1a2e'); ?>',
-                        light: '#f5f5f7',
+                        orange: '#ea580c',
+                        bg: '#0a0a0a',
+                        surface: '#111111',
+                        muted: '#525252',
+                        background: '#0a0a0a',
+                        tertiary: '#ea580c',
+                        secondary: '#525252',
                     },
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
+                        display: ['Bebas Neue', 'sans-serif'],
+                        body: ['DM Sans', 'sans-serif'],
+                        'display-hero': ['Bebas Neue', 'sans-serif'],
+                        'body-md': ['DM Sans', 'sans-serif'],
                     },
                 },
             },
@@ -27,45 +33,188 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --orange: #ea580c;
+            --orange-dim: rgba(234, 88, 12, 0.15);
+            --bg: #0a0a0a;
+            --surface: #111111;
+            --border: rgba(255,255,255,0.06);
+            --text: #fafafa;
+            --muted: #525252;
+            --header-bg: rgba(10,10,10,0.85);
+            --overlay-bg: rgba(10,10,10,0.7);
+            --overlay-heavy: rgba(10,10,10,0.95);
+        }
+
+        .light {
+            --bg: #fafafa;
+            --surface: #ffffff;
+            --border: rgba(0,0,0,0.08);
+            --text: #18181b;
+            --muted: #a1a1aa;
+            --header-bg: rgba(250,250,250,0.85);
+            --overlay-bg: rgba(0,0,0,0.5);
+            --overlay-heavy: rgba(0,0,0,0.9);
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; background-color: #f5f5f7; color: <?php echo e($siteSettings['colors']['primary_color'] ?? '#1a1a2e'); ?>; }
-        h1, h2, h3, h4, h5, h6 { font-family: 'Playfair Display', serif; font-weight: 700; }
-        .hero-gradient { background: linear-gradient(135deg, <?php echo e($siteSettings['colors']['primary_color'] ?? '#1a1a2e'); ?> 0%, #2d2d44 100%); }
-        .video-thumbnail { position: relative; overflow: hidden; aspect-ratio: 16/9; background: #2d2d44; border-radius: 8px; transition: transform 0.3s ease; }
-        .video-thumbnail:hover { transform: scale(1.02); }
-        .play-button { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; background: rgba(244, 164, 96, 0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.3s ease; z-index: 10; }
-        .play-button:hover { background: rgba(244, 164, 96, 1); }
-        .play-button::after { content: ''; width: 0; height: 0; border-left: 15px solid white; border-top: 10px solid transparent; border-bottom: 10px solid transparent; margin-left: 3px; }
-        .card-hover { transition: all 0.3s ease; }
-        .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); }
-        .section-title { font-size: 3rem; font-weight: 700; line-height: 1.2; margin-bottom: 1rem; }
-        .accent-line { width: 60px; height: 4px; background: <?php echo e($siteSettings['colors']['secondary_color'] ?? '#f4a460'); ?>; border-radius: 2px; margin-bottom: 2rem; }
-        .testimonial-card { background: white; padding: 2rem; border-radius: 8px; border-left: 4px solid <?php echo e($siteSettings['colors']['secondary_color'] ?? '#f4a460'); ?>; }
-        .price-card { background: white; padding: 2.5rem; border-radius: 8px; border: 2px solid <?php echo e($siteSettings['colors']['accent_color'] ?? '#e8d5c4'); ?>; transition: all 0.3s ease; }
-        .price-card.featured { border-color: <?php echo e($siteSettings['colors']['secondary_color'] ?? '#f4a460'); ?>; box-shadow: 0 20px 40px rgba(244, 164, 96, 0.15); transform: scale(1.05); }
-        .btn-primary { background: <?php echo e($siteSettings['colors']['secondary_color'] ?? '#f4a460'); ?>; color: white; padding: 0.75rem 2rem; border-radius: 4px; border: none; font-weight: 600; cursor: pointer; transition: all 0.3s ease; text-decoration: none; display: inline-block; }
-        .btn-primary:hover { background: #e08b3a; transform: translateY(-2px); }
-        .btn-secondary { background: white; color: <?php echo e($siteSettings['colors']['primary_color'] ?? '#1a1a2e'); ?>; padding: 0.75rem 2rem; border-radius: 4px; border: 2px solid <?php echo e($siteSettings['colors']['primary_color'] ?? '#1a1a2e'); ?>; font-weight: 600; cursor: pointer; transition: all 0.3s ease; text-decoration: none; display: inline-block; }
-        .btn-secondary:hover { background: <?php echo e($siteSettings['colors']['primary_color'] ?? '#1a1a2e'); ?>; color: white; }
-        .nav-link { color: <?php echo e($siteSettings['header']['header_text_color'] ?? '#1a1a2e'); ?>; text-decoration: none; font-weight: 500; transition: color 0.3s ease; }
-        .nav-link:hover { color: <?php echo e($siteSettings['colors']['secondary_color'] ?? '#f4a460'); ?>; }
-        @media (max-width: 768px) { .section-title { font-size: 2rem; } }
+        body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Bebas Neue', sans-serif; font-weight: 400; letter-spacing: 0.02em; color: var(--text); }
+        a, button { cursor: pointer; }
+
+        .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem, 6vw, 5rem); line-height: 0.9; color: var(--text); letter-spacing: 0.02em; margin-bottom: 1rem; }
+        .accent-line { width: 40px; height: 1px; background: var(--orange); margin-bottom: 1.5rem; }
+
+        .btn-primary {
+            display: inline-flex; align-items: center; gap: 0.75rem;
+            padding: 0.75rem 2rem;
+            background: var(--orange); color: white;
+            font-family: 'DM Sans', sans-serif; font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover { background: #c2410c; }
+
+        .btn-secondary {
+            display: inline-flex; align-items: center; gap: 0.75rem;
+            padding: 0.75rem 2rem;
+            background: transparent; color: var(--text);
+            font-family: 'DM Sans', sans-serif; font-weight: 500;
+            border: 1px solid var(--border);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .btn-secondary:hover { background: var(--orange-dim); border-color: var(--orange); }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            border-color: rgba(234, 88, 12, 0.3);
+            box-shadow: 0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(234, 88, 12, 0.15);
+        }
+
+        .nav-link {
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 500;
+            font-size: 0.85rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover { color: var(--orange); }
+
+        @media (max-width: 768px) { .section-title { font-size: 2.5rem; } }
+
         .slide { opacity: 0; transition: opacity 1s ease-in-out; position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-        .text-secondary { color: <?php echo e($siteSettings['colors']['secondary_color'] ?? '#f4a460'); ?>; }
-        .bg-secondary { background-color: <?php echo e($siteSettings['colors']['secondary_color'] ?? '#f4a460'); ?>; }
-        .hover\:text-secondary:hover { color: <?php echo e($siteSettings['colors']['secondary_color'] ?? '#f4a460'); ?>; }
+
+        @keyframes fadeUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes ringPulse {
+            0%, 100% { transform: scale(1); opacity: 0.4; }
+            50% { transform: scale(1.3); opacity: 0; }
+        }
+
+        @keyframes spinSlow {
+            to { transform: rotate(360deg); }
+        }
+
+        .cursor-dot {
+            position: fixed; width: 8px; height: 8px;
+            background: var(--orange); border-radius: 50%;
+            pointer-events: none; z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease, opacity 0.3s ease;
+        }
+        .cursor-ring {
+            position: fixed; width: 36px; height: 36px;
+            border: 1px solid rgba(234,88,12,0.5); border-radius: 50%;
+            pointer-events: none; z-index: 9998;
+            transform: translate(-50%, -50%);
+            transition: transform 0.18s ease, width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
+        }
+        .cursor-ring.expanded { width: 64px; height: 64px; border-color: rgba(234,88,12,0.8); }
+
+        .noise::after {
+            content: '';
+            position: fixed; inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+            pointer-events: none; z-index: 100; opacity: 0.4;
+        }
+        .glass { background: rgba(17,17,17,0.6); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        .technical-hud { font-family: 'Courier New', monospace; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; }
+        .px-margin-mobile { padding-left: 1.5rem; padding-right: 1.5rem; }
+        @media (min-width: 768px) { .px-margin-desktop { padding-left: 3rem; padding-right: 3rem; } }
+        @media (hover: none) { .cursor-dot, .cursor-ring { display: none; } }
     </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <?php echo $__env->yieldContent('extra-css'); ?>
     <?php echo $__env->yieldPushContent('styles'); ?>
 </head>
-<body class="bg-light">
-    <?php echo $__env->make('components.header', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
-    <main><?php echo $__env->yieldContent('content'); ?></main>
-    <?php echo $__env->make('components.footer', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
+<body>
+    <div class="noise">
+        <div class="cursor-dot" id="cursorDot"></div>
+        <div class="cursor-ring" id="cursorRing"></div>
+        <?php echo $__env->make('components.header', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
+        <main><?php echo $__env->yieldContent('content'); ?></main>
+        <?php echo $__env->make('components.footer', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
+    </div>
+
     <?php echo $__env->yieldPushContent('scripts'); ?>
     <?php echo $__env->yieldContent('extra-js'); ?>
+    <script>
+    function toggleTheme() {
+        var html = document.documentElement;
+        var isLight = html.classList.toggle('light');
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        updateThemeIcon(isLight);
+    }
+    function updateThemeIcon(isLight) {
+        var icons = document.querySelectorAll('#themeIcon, #themeIconMobile');
+        icons.forEach(function(icon) {
+            icon.setAttribute('d', isLight
+                ? 'M12 3a6 6 0 0 0 9 9 6 6 0 1 1-9-9Z'
+                : 'M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z');
+        });
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+        updateThemeIcon(document.documentElement.classList.contains('light'));
+    });
+    </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var dot = document.getElementById('cursorDot');
+        var ring = document.getElementById('cursorRing');
+        if (dot && ring) {
+            var mx = 0, my = 0, rx = 0, ry = 0;
+            document.addEventListener('mousemove', function (e) {
+                mx = e.clientX; my = e.clientY;
+                dot.style.left = mx + 'px';
+                dot.style.top = my + 'px';
+            });
+            (function animRing() {
+                rx += (mx - rx) * 0.12;
+                ry += (my - ry) * 0.12;
+                ring.style.left = rx + 'px';
+                ring.style.top = ry + 'px';
+                requestAnimationFrame(animRing);
+            })();
+            document.querySelectorAll('a, button, .card, .pf-card, .filter-pill, .service-card, .gallery-card, .reel-card, .project-card, .hero-dot').forEach(function (el) {
+                el.addEventListener('mouseenter', function () { ring.classList.add('expanded'); });
+                el.addEventListener('mouseleave', function () { ring.classList.remove('expanded'); });
+            });
+        }
+    });
+    </script>
 </body>
 </html><?php /**PATH C:\Users\jdira\Herd\video_portfolio\resources\views\layouts\app.blade.php ENDPATH**/ ?>
