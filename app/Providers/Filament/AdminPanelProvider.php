@@ -33,7 +33,7 @@ class AdminPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
-        $defaultBrandName = 'FrameFlow Admin';
+        $defaultBrandName = 'Oumalk Admin';
         $primaryColor = \App\Models\SiteCustomization::get('primary_color', null);
         
         $brandName = \App\Models\SiteCustomization::get('admin_brand_name', $defaultBrandName);

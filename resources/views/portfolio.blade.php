@@ -432,7 +432,7 @@
 </style>
 @endpush
 
-@section('title', 'Portfolio — FrameFlow')
+@section('title', 'Portfolio — Oumalk')
 
 @section('content')
 <div class="pf-page">

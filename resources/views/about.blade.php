@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 @endpush
 
-@section('title', 'About — FrameFlow')
+@section('title', 'About — Oumalk')
 
 @section('content')
 @php

@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 @endpush
 
-@section('title', $project->title . ' — FrameFlow')
+@section('title', $project->title . ' — Oumalk')
 
 @section('content')
 <div style="padding: 10rem 1.5rem 6rem;">
@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         <div class="section-fade" style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border);">
             <h3 style="font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--text); letter-spacing: 0.03em; margin-bottom: 2rem;">{{ $project->is_reels ? 'More Reels' : 'More Projects' }}</h3>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 @foreach(\App\Models\Project::where('id', '!=', $project->id)->where('is_reels', $project->is_reels)->latest()->take(2)->get() as $other)
                     <a href="{{ route('portfolio.show', $other) }}" class="related-card">
                         <div style="aspect-ratio: 16/9; overflow: hidden;">

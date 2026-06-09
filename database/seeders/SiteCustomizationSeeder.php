@@ -13,12 +13,12 @@ class SiteCustomizationSeeder extends Seeder
             // Header
             ['key' => 'header_bg_color', 'value' => '#ffffff', 'type' => 'color', 'group' => 'header'],
             ['key' => 'header_text_color', 'value' => '#1a1a2e', 'type' => 'color', 'group' => 'header'],
-            ['key' => 'header_logo_text', 'value' => 'FrameFlow', 'type' => 'text', 'group' => 'header'],
+            ['key' => 'header_logo_text', 'value' => 'Oumalk', 'type' => 'text', 'group' => 'header'],
             
             // Footer
             ['key' => 'footer_bg_color', 'value' => '#1a1a2e', 'type' => 'color', 'group' => 'footer'],
             ['key' => 'footer_text_color', 'value' => '#ffffff', 'type' => 'color', 'group' => 'footer'],
-            ['key' => 'footer_copyright', 'value' => '© 2026 FrameFlow. All rights reserved.', 'type' => 'text', 'group' => 'footer'],
+            ['key' => 'footer_copyright', 'value' => '© 2026 Oumalk. All rights reserved.', 'type' => 'text', 'group' => 'footer'],
             
             // Colors
             ['key' => 'primary_color', 'value' => '#1a1a2e', 'type' => 'color', 'group' => 'colors'],
