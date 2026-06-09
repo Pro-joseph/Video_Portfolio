@@ -1,7 +1,7 @@
-# FrameFlow — Design System
+# Oumalk — Design System
 > Cinematic · Artistic · 3D · Dark
 
-Use this file as a reference when building or redesigning any page in the FrameFlow project. Every rule here matches the `portfolio.blade.php` redesign exactly.
+Use this file as a reference when building or redesigning any page in the Oumalk project. Every rule here matches the `portfolio.blade.php` redesign exactly.
 
 ---
 

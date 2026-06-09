@@ -4,7 +4,7 @@
 <script>if(localStorage.getItem('theme')==='light')document.documentElement.className='light'</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'FrameFlow - Professional Videography')</title>
+    <title>@yield('title', 'Oumalk - Professional Videography')</title>
     <meta name="description" content="@yield('description', 'Professional videography services for weddings, events, and commercial content')">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -17,10 +17,15 @@
                         bg: '#0a0a0a',
                         surface: '#111111',
                         muted: '#525252',
+                        background: '#0a0a0a',
+                        tertiary: '#ea580c',
+                        secondary: '#525252',
                     },
                     fontFamily: {
                         display: ['Bebas Neue', 'sans-serif'],
                         body: ['DM Sans', 'sans-serif'],
+                        'display-hero': ['Bebas Neue', 'sans-serif'],
+                        'body-md': ['DM Sans', 'sans-serif'],
                     },
                 },
             },
@@ -146,7 +151,13 @@
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
             pointer-events: none; z-index: 100; opacity: 0.4;
         }
+        .glass { background: rgba(17,17,17,0.6); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        .technical-hud { font-family: 'Courier New', monospace; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; }
+        .px-margin-mobile { padding-left: 1.5rem; padding-right: 1.5rem; }
+        @media (min-width: 768px) { .px-margin-desktop { padding-left: 3rem; padding-right: 3rem; } }
+        @media (hover: none) { .cursor-dot, .cursor-ring { display: none; } }
     </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     @yield('extra-css')
     @stack('styles')
 </head>
@@ -169,12 +180,12 @@
         updateThemeIcon(isLight);
     }
     function updateThemeIcon(isLight) {
-        var icon = document.getElementById('themeIcon');
-        if (icon) {
+        var icons = document.querySelectorAll('#themeIcon, #themeIconMobile');
+        icons.forEach(function(icon) {
             icon.setAttribute('d', isLight
                 ? 'M12 3a6 6 0 0 0 9 9 6 6 0 1 1-9-9Z'
                 : 'M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z');
-        }
+        });
     }
     document.addEventListener('DOMContentLoaded', function() {
         updateThemeIcon(document.documentElement.classList.contains('light'));

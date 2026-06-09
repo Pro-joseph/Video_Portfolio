@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 @endpush
 
-@section('title', 'Reels — FrameFlow')
+@section('title', 'Reels — Oumalk')
 
 @section('content')
 <div style="padding: 10rem 1.5rem 6rem;">

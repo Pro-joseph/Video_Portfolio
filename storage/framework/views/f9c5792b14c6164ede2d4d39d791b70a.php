@@ -3,7 +3,7 @@
         <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
             <div class="md:col-span-2">
                 <h3 class="text-2xl mb-4" style="font-family: 'Bebas Neue', sans-serif; color: var(--text); letter-spacing: 0.03em;">
-                    <?php echo e($siteSettings['header']['header_logo_text'] ?? 'FrameFlow'); ?>
+                    <?php echo e($siteSettings['header']['header_logo_text'] ?? 'Oumalk'); ?>
 
                 </h3>
                 <p style="color: var(--muted); max-width: 400px; line-height: 1.7;">Professional videography services for life's most precious moments. We transform your stories into cinematic experiences.</p>
@@ -44,7 +44,7 @@
             </div>
         </div>
         <div style="padding-top: 2rem; border-top: 1px solid var(--border); display: flex; flex-direction: column; md:flex-row; justify-content: space-between; align-items: center; gap: 1rem;">
-            <p style="color: var(--muted); font-size: 0.85rem;"><?php echo e($siteSettings['footer']['footer_copyright'] ?? '© 2026 FrameFlow. All rights reserved.'); ?></p>
+            <p style="color: var(--muted); font-size: 0.85rem;"><?php echo e($siteSettings['footer']['footer_copyright'] ?? '© 2026 Oumalk. All rights reserved.'); ?></p>
             <div class="flex gap-6">
                 <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(!empty($siteSettings['contact']['contact_email'])): ?>
                 <a href="mailto:<?php echo e($siteSettings['contact']['contact_email']); ?>" class="nav-link" style="text-transform: none; font-size: 0.85rem;"><?php echo e($siteSettings['contact']['contact_email']); ?></a>

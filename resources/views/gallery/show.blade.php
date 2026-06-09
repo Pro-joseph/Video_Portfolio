@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 @endpush
 
-@section('title', $client->name . ' Gallery — FrameFlow')
+@section('title', $client->name . ' Gallery — Oumalk')
 
 @section('content')
 <div style="padding: 10rem 1.5rem 6rem;">

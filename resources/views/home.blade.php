@@ -49,6 +49,15 @@
         background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.85) 100%);
     }
 
+    @media (max-width: 768px) {
+        .hero-slider .slide img {
+            object-position: center 30%;
+        }
+        .hero-slider .slide::after {
+            background: linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.92) 100%);
+        }
+    }
+
     .hero-dots {
         position: absolute;
         bottom: 6rem; left: 50%;

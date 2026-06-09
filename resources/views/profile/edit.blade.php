@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Profile - FrameFlow')
+@section('title', 'Profile - Oumalk')
 
 @section('content')
 <div class="pt-32 pb-20 px-6">
